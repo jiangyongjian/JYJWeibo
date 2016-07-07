@@ -1,0 +1,99 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+
+    #import "UIImage+Extension.h"
+    #import "UIView+Extension.h"
+    #import "UIBarButtonItem+Extension.h"
+
+#ifdef DEBUG //调试状态
+#define JYJLog(...) NSLog(__VA_ARGS__)
+#else //发布状态
+#define JYJLog(...)
+#endif
+
+// 设置颜色
+#define JYJColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+// 随机色
+#define JYJRandomColor JYJColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+
+// 全局背景色
+#define JYJGlobalBg JYJColor(211, 211, 211)
+
+//  是否为iOS7
+#define iOS7 ([[UIDevice currentDevice].systemVersion doubleValue] >= 7.0)
+
+#define FourInch ([UIScreen mainScreen].bounds.size.height == 568.0)
+// 导航栏标题的字体
+#define JYJNavigationTitleFont [UIFont boldSystemFontOfSize:20]
+
+// 应用信息
+#define JYJAppKey @"4058339239"
+#define JYJAppSecret @"ce8d550b16f92a47de6c6d6c58b9e598"
+#define JYJRedirectURI @"http://www.baidu.com"
+
+// 屏幕尺寸
+#define JYJScreenW [UIScreen mainScreen].bounds.size.width
+
+// cell的一些计算参数
+// cell的内边距
+#define JYJStatusCellInset 10
+// cell之间的距离
+#define JYJStatusCellMargin 10
+
+// 原创微博昵称字体
+#define JYJStatusOriginalNameFont [UIFont systemFontOfSize:13]
+// 原创微博时间字体
+#define JYJStatusOriginalTimeFont [UIFont systemFontOfSize:11]
+// 原创微博来源字体
+#define JYJStatusOriginalSourceFont JYJStatusOriginalTimeFont
+// 原创微博正文字体
+#define JYJStatusOriginalTextFont [UIFont systemFontOfSize:14]
+// 富文本字体
+#define JYJStatusRichTextFont JYJStatusOriginalTextFont
+
+
+// 转发微博昵称字体
+#define JYJStatusRetweetedNameFont JYJStatusOriginalNameFont
+// 转发微博正文字体
+#define JYJStatusRetweetedTextFont JYJStatusOriginalTextFont
+// 转发微博正文颜色
+#define JYJStatusHighTextColor JYJColor(88, 161, 253)
+
+
+// 表情最大的行数
+#define JYJEmotionMaxRows 3
+// 表情最大的列数
+#define JYJEmotionMaxCols 7
+// 每页最多显示多少个表情
+#define JYJEmotionMaxCountPerPage (JYJEmotionMaxCols * JYJEmotionMaxRows - 1)
+
+
+// 通知
+// 选中表情的通知
+#define JYJEmotionDidSelectedNotification @"JYJEmotionDidSelectedNotification"
+// 点击删除按钮的通知
+#define JYJEmotionDidDeletedNotification @"JYJEmotionDidDeletedNotification"
+// 通知里面取出表情用的key
+#define JYJSelectedEmotion @"JYJSelectedEmotion"
+
+// 链接选中的通知
+#define JYJLinkDidSelectedNotification @"JYJLinkDidSelectedNotification"
+
+// 富文本里面出现的链接
+#define JYJLinkText @"JYJLinkText"
+#endif
+
+
